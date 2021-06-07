@@ -1,25 +1,24 @@
-import logo from './logo.svg';
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import ScrollToTop from "./Components/Shared/ScrollToTop";
+import Home from "./Components/Index";
+import SignUp from "./Components/SignUp";
+import SignupConfirm from './Components/Auth/SignupConfirm';
+import Dashboard from "./Components/Dashboard/Index";
 import './App.css';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+	return(
+		<Router>
+			<ScrollToTop>
+				<Switch>
+					<Route exact path="/" component={Home} />
+					<Route path="/signup" component={SignUp} />
+					<Route path="/signup-confirm" component={SignupConfirm} />
+					<Route path="/dashboard" component={Dashboard} />
+				</Switch>
+			</ScrollToTop>
+		</Router>	
+	);
 }
 
 export default App;
