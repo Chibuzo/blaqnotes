@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const request = require("../Helpers/APIRequest");
+import { get, post } from "../Helpers/APIRequest";
 
 const useUserAuth = (userType = 'user') => {
     const storageLabel = `${userType}Data`;
@@ -24,7 +24,7 @@ const useUserAuth = (userType = 'user') => {
 
     const login = async (email, password) => {
         try {
-            const { data } = await request.post('user/login', { email, password }, 'POST', false);
+            const { data } = await post('user/login', { email, password }, 'POST', false);
 
             if (data && data.user && data.user.token) {
                 localStorage.setItem(storageLabel, JSON.stringify(data.user));
@@ -34,7 +34,7 @@ const useUserAuth = (userType = 'user') => {
                 setLoginError(data.message);
             }
         } catch (err) {
-            setLoginError(err.response.data.error.message);
+            setLoginError(err.response && err.response.data.error.message);
         }
     }
 
@@ -45,7 +45,7 @@ const useUserAuth = (userType = 'user') => {
 
     const signUp = async (user) => {
         try {
-            await request.post('user/register', user, 'POST', false);
+            await post('user/register', user, 'POST', false);
             return true;
         } catch (err) {
             setSignupError(err.response.data.error.message);
@@ -57,7 +57,7 @@ const useUserAuth = (userType = 'user') => {
         const guid = _code[0];
         const email = _code[1];
 
-        const result = await request.fetchData(`Users/VerifyEmail/${email}/${guid}`, false);
+        const result = await get(`Users/VerifyEmail/${email}/${guid}`, false);
         setVerification(result.Status);
     }
 
