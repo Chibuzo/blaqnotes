@@ -16,7 +16,7 @@ const Login = ({ props }) => {
     }
 
     return(
-        <div style={{ backgroundColor: '#000', borderRadius: '10px', color: '#fff' }}>
+        <div style={{ backgroundColor: '#000', borderRadius: '10px', color: '#fff' }} className="login-div">
             <div className="pane">
                 <Form onSubmit={handleSubmit}>
                     <Form.Group controlId="formBasicEmail">
@@ -31,10 +31,10 @@ const Login = ({ props }) => {
                     <Form.Text className="text-muted">
                         Forgotten password?
                     </Form.Text>
-                    <p><a href="/signup" className="float-right">Sign Up</a></p>
-                    <br />
+                    <p className="mt-3 float-right"><span className="text-muted">Don't have an account?</span> <a href="/signup">Sign Up</a></p>
+                    <br /><br />
                     {loginError && <Alert variant="danger">{loginError}</Alert>}
-                    <Button variant="dark" type="submit">
+                    <Button variant="danger" type="submit" style={{ padding: '7px 45px' }} className="clearfix">
                         Login
                     </Button>
                 </Form>

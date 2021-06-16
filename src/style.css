@@ -1,12 +1,38 @@
+body {
+    font-family: 'Montserrat', sans-serif;
+}
+
+a:link {
+    color: #660000;
+}
+
+a:hover {
+    text-decoration: none;
+    color: #660000;
+    font-weight: bold;
+}
+
+a:visited {
+    color: #d84c4c;
+}
+
+h1, h2, h3, h4, h5 {
+    font-family: 'Open Sans', sans-serif;
+}
+
 .custom-header {
     padding: 30px;
     background-color: #000;
     color: #fff;
 }
 
+.custom-header a {
+    color: inherit;
+}
+
 .custom-header h1 {
     font-size: 170px;
-    font-weight: normal;
+    font-weight: 600;
     margin-bottom: -18px;
 }
 
@@ -19,16 +45,28 @@
     padding: 45px;
 }
 
+.login-div a {
+    color: inherit;
+}
+
 .features {
-    margin-top: 100px;
     background-color: #000;
     color: #fff;
+    padding-bottom: 50px;
+}
+
+.features h5 {
+    font-weight: 600;
 }
 
 .features img {
     width: 90px;
     /* margin-right: 36px */
     margin: auto;
+}
+
+.feature-text {
+    color: #ccc;
 }
 
 .dashboard-div {
