@@ -1,11 +1,18 @@
-import React, { useEffect } from 'react'; 
-import UserThumb from './Shared/UserThumb';
+import React, { useEffect } from 'react';
+import { BrowserRouter as Router, Route } from "react-router-dom";
 import useUserAuth from '../../Hooks/useUserAuth';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
-import { Link } from "react-router-dom";
+import Header from './Shared/Header';
+import SideMenu from './Shared/SideMenu';
+import Breadcrumb from './Shared/Breadcrumb';
+import Dashboard from './Dashboard';
+import NewCourse from './ELearning/NewCourse';
+import Courses from './ELearning/Courses';
+import CoursePage from './ELearning/CoursePage';
+import CreateAssessment from './ELearning/CreateAssessment';
+import AssessmentPage from './ELearning/AssessmentPage';
+import Timeline from '../Timeline/Index';
 
-const Dashboard = (props) => {
+const Index = (props) => {
     const { user, isLoggedIn } = useUserAuth();
 
     useEffect(() => {
@@ -13,64 +20,44 @@ const Dashboard = (props) => {
         //if (!user || !user.isLoggedIn) props.history.push('/')
     }, []);
 
-    useEffect(() => {
-        
-    }, [user])
-
-    return(
-        <div style={{ backgroundColor: '#000', padding: '25px' }}>
-            <Row style={{ color: '#fff' }}>
-                <Col>
-                    <UserThumb user={user} />
-                </Col>
-                <Col className="float-right" md={{ span: 2 }}>
-                    View Wallet
-                </Col>
-            </Row>
-            <div className="dashboard-div">
-                <Row>
-                    <Col md={{ span: 3 }}>
-                        <ul>
-                            <li>
-                                <Link to="/">
-                                    <i className="fa fa-video-camera" />
-                                    <span>Network</span>
-                                </Link>
-                            </li>
-                            <li>
-                                <Link to="/">
-                                    <i className="fa fa-video-camera" />
-                                    <span>Your Learning</span>
-                                </Link>
-                            </li>
-                            <li>
-                                <Link to="/">
-                                    <i className="fa fa-video-camera" />
-                                    <span>Consortium</span>
-                                </Link>
-                            </li>
-                            <li>
-                                <Link to="/">
-                                    <i className="fa fa-video-camera" />
-                                    <span>Dating</span>
-                                </Link>
-                            </li>
-                            <li>
-                                <Link to="/">
-                                    <i className="fa fa-video-camera" />
-                                    <span>Crowd Funding</span>
-                                </Link>
-                            </li>
-                        </ul>
-                    </Col>
-                    <Col>
-                        <h3>Start your e-learning journey here</h3>
-                        <p>Introduction to Black History: Lesson 1</p>
-                    </Col>
-                </Row>
+    return (
+        <Router>
+            <div className="preloader">
+                <div className="lds-ripple">
+                    <div className="lds-pos"></div>
+                    <div className="lds-pos"></div>
+                </div>
             </div>
-        </div>    
+
+            <div id="main-wrapper" data-layout="vertical" data-navbarbg="skin5" data-sidebartype="full"
+                data-sidebar-position="absolute" data-header-position="absolute" data-boxed-layout="full">
+
+                <Header />
+
+                <SideMenu />
+
+                <div className="page-wrapper">
+                    <Breadcrumb />
+
+                    <div class="container-fluid">
+                        <div class="row">
+                            <Route exact path="/user/dashboard" component={Dashboard} />
+                            <Route path="/user/courses" component={Courses} />
+                            <Route path="/user/new-course" component={NewCourse} />
+                            <Route path="/user/course/:id" component={CoursePage} />
+                            <Route path="/user/create-test/:course_id" component={CreateAssessment} />
+                            <Route path="/user/assessment/:course_id" component={AssessmentPage} />
+                            <Route path="/user/timeline" component={Timeline} />
+                        </div>
+                    </div>
+
+                    <footer class="footer text-center">
+                        Copyright &copy 2021
+                    </footer>
+                </div>
+            </div>
+        </Router>
     );
 }
 
-export default Dashboard;
+export default Index;

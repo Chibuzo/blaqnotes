@@ -1,0 +1,87 @@
+.cbt-list {
+    list-style-type: none;
+    margin-left: -26px;
+}
+
+.cbt-questions {
+    padding: 10px 15px;
+}
+
+.questions {
+    margin-top: 15px;
+}
+
+.question {
+    display: inline;
+}
+
+.question-wrapper {
+    margin-bottom: 10px;
+}
+
+.question span {
+    border: 1px solid #ccc;
+    padding: 10px 16px;
+    margin: 8px;
+    display: inline-block;
+    border-radius: 50%;
+    /* float: left; */
+    cursor: pointer;
+}
+
+.question span:hover {
+    border: 1px solid #666;
+    /* color: #666; */
+    font-weight: bold;
+}
+
+.active_q {
+    background-color: #A37F2D;
+    color:#fff;
+}
+
+.answered_q {
+    background-color: #99cc66;
+    color:#fff;
+}
+
+.skipped_q {
+    background-color: #c9302c;
+    color:#fff;
+}
+
+.question-num-base {
+    width: 40px;
+    height: 40px;
+    margin: 5px;
+    border-radius: 50%;
+    padding-left: 14px;
+    padding-top: 9px;
+    font-size: 15px;
+    border: #ccc solid thin;
+    cursor: pointer;
+}
+
+.question-key {
+    margin: auto;
+    width: 20px;
+    height: 20px;
+    cursor: default;
+}
+
+.key-text {
+    font-size: 12px;
+    text-align: center;
+    margin-bottom: 5px;
+    cursor: default;
+}
+
+.nav-btns {
+    margin-top: 20px;
+    /* position: fixed;
+    bottom: 0;
+    padding: 15px 10px;
+    background-color: #fff;
+    width: 100%;
+    box-sizing: border-box; */
+}

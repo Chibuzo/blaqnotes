@@ -1,4 +1,3 @@
-//const fetchIntercept = require('fetch-intercept');
 const axios = require('axios');
 
 const get = async (path, auth = false) => {
@@ -7,7 +6,7 @@ const get = async (path, auth = false) => {
     const res = await axios({
         url: process.env.REACT_APP_API_URL + path,
         method: 'GET',
-        headers: headers
+        headers
     });
 
     return res.data;

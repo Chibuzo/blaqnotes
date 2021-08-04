@@ -5,7 +5,7 @@ import Alert from 'react-bootstrap/Alert';
 import useUserAuth from '../../Hooks/useUserAuth';
 
 const Login = ({ props }) => {
-    const [email, setEmaill] = useState();
+    const [email, setEmail] = useState();
     const [password, setPassword] = useState();
     const { login, loginError } = useUserAuth();
 
@@ -15,13 +15,13 @@ const Login = ({ props }) => {
         if (loginStatus === true) props.history.push('/dashboard');
     }
 
-    return(
+    return (
         <div style={{ backgroundColor: '#000', borderRadius: '10px', color: '#fff' }} className="login-div">
             <div className="pane">
                 <Form onSubmit={handleSubmit}>
                     <Form.Group controlId="formBasicEmail">
                         <Form.Label>Email address</Form.Label>
-                        <Form.Control type="email" onChange={e => setEmaill(e.target.value)} placeholder="Enter email" />
+                        <Form.Control type="email" onChange={e => setEmail(e.target.value)} placeholder="Enter email" />
                     </Form.Group>
 
                     <Form.Group controlId="formBasicPassword">
