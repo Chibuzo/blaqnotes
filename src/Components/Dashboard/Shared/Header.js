@@ -10,7 +10,7 @@ const Header = () => {
         <header className="topbar" data-navbarbg="skin5">
             <nav className="navbar top-navbar navbar-expand-md navbar-dark">
                 <div className="navbar-header" data-logobg="skin5">
-                    <a className="navbar-brand" href="index.html">
+                    <a className="navbar-brand" href="index">
                         <b className="logo-icon">
                             <img src={logoEmblem} alt="homepage" className="dark-logo" />
                             <img src={logoEmblem2} alt="homepage" className="light-logo" />
@@ -20,7 +20,7 @@ const Header = () => {
                             <img src={logoText2} className="light-logo" alt="homepage" />
                         </span>
                     </a>
-                    <a className="nav-toggler waves-effect waves-light d-block d-md-none" href="javascript:void(0)"><i
+                    <a className="nav-toggler waves-effect waves-light d-block d-md-none" href=""><i
                         className="ti-menu ti-close"></i></a>
                 </div>
                 <div className="navbar-collapse collapse" id="navbarSupportedContent" data-navbarbg="skin5">
@@ -39,11 +39,11 @@ const Header = () => {
                                 <img src={userImg} alt="user" className="rounded-circle" width="31" />
                             </a>
                             <ul className="dropdown-menu dropdown-menu-end user-dd animated" aria-labelledby="navbarDropdown">
-                                <a className="dropdown-item" href="javascript:void(0)"><i className="ti-user m-r-5 m-l-5"></i>
+                                <a className="dropdown-item" href=""><i className="ti-user m-r-5 m-l-5"></i>
                                     My Profile</a>
-                                <a className="dropdown-item" href="javascript:void(0)"><i className="ti-wallet m-r-5 m-l-5"></i>
+                                <a className="dropdown-item" href=""><i className="ti-wallet m-r-5 m-l-5"></i>
                                     My Balance</a>
-                                <a className="dropdown-item" href="javascript:void(0)"><i className="ti-email m-r-5 m-l-5"></i>
+                                <a className="dropdown-item" href=""><i className="ti-email m-r-5 m-l-5"></i>
                                     Inbox</a>
                             </ul>
                         </li>

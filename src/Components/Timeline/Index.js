@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import NewPost from './NewPost';
 import usePost from '../../Hooks/usePost';
 

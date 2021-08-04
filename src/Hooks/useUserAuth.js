@@ -13,7 +13,6 @@ const useUserAuth = (userType = 'user') => {
         if (localStorage.getItem(storageLabel) !== null) {
             const __user = JSON.parse(localStorage.getItem(storageLabel));
             // check if it has expired
-            console.log(__user)
             // if still active, set state
             setUser(__user);
             return true;

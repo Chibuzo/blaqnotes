@@ -1,15 +1,12 @@
 import React, { useState, useEffect } from "react";
 
 import Swal from "sweetalert2";
-
-import useUserAuth from "../../../Hooks/useUserAuth";
 import useCBT from "../../../Hooks/useCBT";
 
 import "../../../css/cbt.css";
 
 
 const TakeTest = (props) => {
-    const { user } = useUserAuth();
     const course_id = props.match.params.course_id;
     const { fetchAssessment, assessment: questions, submitAssessment, result, loading } = useCBT(); // deprecating this soon
     const [testStarted, setTestStarted] = useState("No");
@@ -25,7 +22,7 @@ const TakeTest = (props) => {
         optE: ''
     });
 
-    useEffect(async () => {
+    useEffect(() => {
         const fetchCourseAssessment = async () => {
             await fetchAssessment(course_id);
         }
@@ -34,7 +31,6 @@ const TakeTest = (props) => {
     }, []);
 
     useEffect(() => {
-        console.log({ questions })
         questions && questions.length > 0 && setCurrentQuestion(questions[0]);
     }, [questions]);
 
