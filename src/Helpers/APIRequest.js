@@ -37,8 +37,7 @@ export {
 }
 
 function doAuthHeader(auth) {
-    let headers = new Headers();
-    headers.append('Content-Type', 'application/json');
+    const headers = { 'Content-Type': 'application/json' };
 
     if (auth !== true) return headers;
 
@@ -47,6 +46,6 @@ function doAuthHeader(auth) {
     if (userData == null) {
         throw new Error("Not logged In");
     }
-    headers.append('Authorization', `Bearer ${userData.token}`);
+    headers['Authorization'] = `Bearer ${userData.token}`;
     return headers;
 }

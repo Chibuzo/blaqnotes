@@ -3,8 +3,9 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 import useUserAuth from '../../Hooks/useUserAuth';
 import Header from './Shared/Header';
 import SideMenu from './Shared/SideMenu';
-import Breadcrumb from './Shared/Breadcrumb';
 import Dashboard from './Dashboard';
+import Notes from './Notes';
+import NotePage from './NotePage';
 import NewCourse from './ELearning/NewCourse';
 import Courses from './ELearning/Courses';
 import CoursePage from './ELearning/CoursePage';
@@ -37,22 +38,22 @@ const Index = (props) => {
                 <SideMenu />
 
                 <div className="page-wrapper">
-                    <Breadcrumb />
-
-                    <div class="container-fluid">
-                        <div class="row">
-                            <Route exact path="/user/dashboard" component={Dashboard} />
+                    <div className="container-fluid">
+                        <div className="row">
+                            <Route exact path="/user" component={Dashboard} />
                             <Route path="/user/courses" component={Courses} />
+                            <Route path="/user/notes" component={Notes} />
                             <Route path="/user/new-course" component={NewCourse} />
                             <Route path="/user/course/:id" component={CoursePage} />
                             <Route path="/user/create-test/:course_id" component={CreateAssessment} />
                             <Route path="/user/assessment/:course_id" component={AssessmentPage} />
                             <Route path="/user/timeline" component={Timeline} />
+                            <Route path="/user/note/:id/:topic" component={NotePage} />
                         </div>
                     </div>
 
-                    <footer class="footer text-center">
-                        Copyright &copy 2021
+                    <footer className="footer text-center">
+
                     </footer>
                 </div>
             </div>

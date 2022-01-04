@@ -1,19 +1,25 @@
-import React, { useEffect, useState } from 'react'; 
+import React from 'react';
+import userImg from '../../../images/user.jpg';
 
-const UserThumb = ({ user: userData }) => {
-    const [user, setUser] = useState({
-        fullname: '',
-        id: ''
-    });
-    
-    useEffect(() => {
-        setUser({ ...userData });
-    }, [userData]);
-    
-    return(
-        <div className="user-thumb">
-            <div style={{ width: '60px', height: '60px', borderRadius: '50%', backgroundColor: '#f8f8f8', marginRight: '20px' }} className="float-left"></div>
-            <div className="user-thumb-name">{user.fullname}</div>
+const UserThumb = ({ user, full = false, options = {} }) => {
+    const { firstname = '', lastname = '', fullname = '', thumb = '', _id = '' } = user;
+    const { follow, followUser } = options;
+
+    const thumb_style = full ? 'user-thumb' : 'user-thumb-inline';
+
+    return (
+        <div className={thumb_style}>
+            <div className="user-pic">
+                <img src={userImg} alt="users" className="rounded-circle" width="40" />
+            </div>
+
+            {full === true
+                ?
+                <div className="user-thumb-fullname">{fullname ? fullname : lastname + ' ' + firstname}</div>
+                :
+                <div className="user-thumb-lastname">{lastname}</div>
+            }
+            {follow && <button className="btn btn-inverse btn-sm float-right" onClick={() => followUser(_id)}>Follow</button>}
         </div>
     );
 }

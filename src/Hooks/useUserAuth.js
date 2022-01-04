@@ -14,7 +14,7 @@ const useUserAuth = (userType = 'user') => {
             const __user = JSON.parse(localStorage.getItem(storageLabel));
             // check if it has expired
             // if still active, set state
-            setUser(__user);
+            !user && setUser(__user);
             return true;
         } else {
             setUser({ IsLoggedIn: false });
@@ -35,6 +35,11 @@ const useUserAuth = (userType = 'user') => {
         } catch (err) {
             setLoginError(err.response && err.response.data.error.message);
         }
+    }
+
+    const getLoggedInUser = () => {
+        isLoggedIn();
+        return user;
     }
 
     const logout = () => {
@@ -69,7 +74,8 @@ const useUserAuth = (userType = 'user') => {
         signUp,
         signupError,
         verifyEmail,
-        verificationStatus
+        verificationStatus,
+        getLoggedInUser,
     }
 };
 

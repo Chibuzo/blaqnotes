@@ -12,7 +12,7 @@ const Login = ({ props }) => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         const loginStatus = await login(email, password);
-        if (loginStatus === true) props.history.push('/dashboard');
+        if (loginStatus === true) props.history.push('/user');
     }
 
     return (

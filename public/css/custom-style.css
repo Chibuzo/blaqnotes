@@ -1,0 +1,148 @@
+@font-face {
+  font-family: "gilroy";
+  src: url(../fonts/Gilroy-ExtraBold.ttf);
+}
+
+.logo h1, .logo h2 {
+    font-family: "gilroy", Helvetica;
+    color: #000;
+}
+
+.logo h1 {
+    font-size: 80px;
+    margin-left: 40px;
+    margin-bottom: -15px;
+    margin-top: -50px;
+}
+
+.logo h2 {
+    font-size: 25px;
+    margin-left: 10px;
+}
+
+.topbar {
+    z-index: 0;
+}
+
+.page-wrapper {
+    background: linear-gradient(#A5A1Df, #c0c0c1);
+    border-radius: 30px;
+    width: 80%;
+}
+
+.text-white {
+    color: #fff;
+}
+
+.topbar {
+    box-shadow: none;
+}
+
+.user-thumb {
+    display: block !important;
+}
+
+.user-pic {
+    display: inline-block;
+}
+
+.user-thumb-fullname {
+    display: inline-block;
+    position: relative;
+    top: 3px;
+    left: 8px
+}
+
+.user-thumb-inline {
+    display: inline-block;
+    text-align: center;
+    margin-left: 14px;
+}
+
+.user-thumb-inline .user-pic {
+    margin: 4px auto;
+}
+
+.post-note-div {
+    margin-top: 25px;
+    background-color: #0f0c34;
+    padding: 15px;
+    padding-top: 40px; 
+    border-radius: 8px;
+}
+
+.post-note-div .textarea {
+    border-radius: 20px;
+    background-color: #f8f8f8;
+    padding: 10px 25px;
+    text-align: center;
+}
+
+.user-suggestions {
+    margin-top: 30px;
+}
+
+.modal-90w {
+    max-width: 80% !important   ;
+}
+
+.modal-header {
+    background-color: #a09bd8;
+}
+
+.btn-inverse {
+    background-color: #0f0c32 !important;
+    color: #f8f8f8;
+}
+
+.category-wrapper {
+    margin: 13px auto;
+}
+
+.category {
+    display: inline-block;
+    padding: 10px 16px;
+    margin: 8px 8px;
+    border-radius: 20px;
+    background-color: #e8e8e8;
+    cursor: pointer;
+}
+
+.category:hover {
+    font-weight: bold;
+}
+
+.note-listing img {
+    width: 20px;
+}
+
+.note-listing span {
+    margin: 8px;
+}
+
+.tab-bg {
+    cursor: pointer;
+}
+
+.tab-bg-active-left {
+    top: -20px;
+    left: -10px;
+    position: relative;
+    border-top-left-radius: 30px;
+    padding: 34px 0;
+    background-color: #800000
+}
+
+.tab-bg-active-right {
+    top: -20px;
+    right: -10px;
+    position: relative;
+    border-top-right-radius: 30px;
+    padding: 34px 0;
+    background-color: #800000
+}
+
+.note, .comments {
+    font-size: 20px;
+    font-weight: bold;
+}
