@@ -42,12 +42,22 @@ const usePost = () => {
         }
     }
 
+    const powerUp = async note_id => {
+        try {
+            const res = await post('notes/powerup', { note_id });
+            return res.data.power_up;
+        } catch (err) {
+            console.error(err);
+        }
+    }
+
     return {
         fetchPosts,
         fetchPost,
         posts,
         savePost,
         postComment,
+        powerUp,
         formatDate
     }
 }

@@ -11,13 +11,18 @@ const useUserAuth = (userType = 'user') => {
 
     const isLoggedIn = () => {
         if (localStorage.getItem(storageLabel) !== null) {
-            const __user = JSON.parse(localStorage.getItem(storageLabel));
-            // check if it has expired
-            // if still active, set state
-            !user && setUser(__user);
-            return true;
+            let __user = {};
+            if (!user) {
+                __user = JSON.parse(localStorage.getItem(storageLabel));
+                // check if it has expired
+                // if still active, set state
+                setUser(__user);
+                return __user;
+            }
+            return user;
         } else {
             setUser({ IsLoggedIn: false });
+            return false;
         }
     }
 
@@ -37,10 +42,10 @@ const useUserAuth = (userType = 'user') => {
         }
     }
 
-    const getLoggedInUser = () => {
-        isLoggedIn();
-        return user;
-    }
+    // const getLoggedInUser = () => {
+    //     isLoggedIn();
+    //     return user;
+    // }
 
     const logout = () => {
         localStorage.removeItem(storageLabel);
@@ -75,7 +80,7 @@ const useUserAuth = (userType = 'user') => {
         signupError,
         verifyEmail,
         verificationStatus,
-        getLoggedInUser,
+        // getLoggedInUser,
     }
 };
 

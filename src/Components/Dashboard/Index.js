@@ -23,13 +23,6 @@ const Index = (props) => {
 
     return (
         <Router>
-            <div className="preloader">
-                <div className="lds-ripple">
-                    <div className="lds-pos"></div>
-                    <div className="lds-pos"></div>
-                </div>
-            </div>
-
             <div id="main-wrapper" data-layout="vertical" data-navbarbg="skin5" data-sidebartype="full"
                 data-sidebar-position="absolute" data-header-position="absolute" data-boxed-layout="full">
 

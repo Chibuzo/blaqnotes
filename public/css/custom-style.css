@@ -118,6 +118,7 @@
 
 .note-listing span {
     margin: 8px;
+    cursor: pointer;
 }
 
 .tab-bg {

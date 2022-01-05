@@ -1,13 +1,16 @@
 import React, { useEffect, useState } from "react";
 import usePost from '../../Hooks/usePost';
-import powerUp from '../../images/power-up.png';
+import powerUpImg from '../../images/power-up.png';
 import replies from '../../images/replies.png';
 import shares from '../../images/share.png';
 import Form from 'react-bootstrap/Form';
-import { useParams } from 'react-router-dom'
+import useUserAuth from '../../Hooks/useUserAuth';
+import { useParams } from 'react-router-dom';
 
 const NotePage = () => {
-    const { fetchPost, postComment, formatDate } = usePost();
+    const { fetchPost, postComment, powerUp, formatDate } = usePost();
+    const { isLoggedIn } = useUserAuth();
+
     const [note, setNote] = useState({
         topic: '',
         category: '',
@@ -41,6 +44,16 @@ const NotePage = () => {
         setNote({ ...note, comments });
     }
 
+    const powerUpNote = async note_id => {
+        const { id: user_id } = isLoggedIn();
+
+        if (note.power_up.includes(user_id)) return;
+        console.log({ note });
+        const power_up = await powerUp(note_id);
+        console.log({ power_up })
+        setNote({ ...note, power_up });
+    }
+
     return (
         <div>
             <div className="row">
@@ -49,7 +62,7 @@ const NotePage = () => {
                         {formatDate(note.createdAt)} <span className="category">{note.category}</span> <strong>Title:</strong> {note.topic}
                         <p className="text-white mt-3">{note.note}</p>
                     </div>
-                    <div className="note-listing text-center"><span><img src={powerUp} /> {note.power_up.length}</span> <span><img src={replies} /> {note.comments.length}</span><span><img src={shares} /> 0</span></div>
+                    <div className="note-listing text-center"><span onClick={e => powerUpNote(id)} title="Power Up"><img src={powerUpImg} /> {note.power_up.length}</span> <span><img src={replies} /> {note.comments.length}</span><span><img src={shares} /> 0</span></div>
                 </div>
             </div>
 
