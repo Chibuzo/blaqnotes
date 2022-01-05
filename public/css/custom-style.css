@@ -121,6 +121,10 @@
     cursor: pointer;
 }
 
+.note p {
+    white-space: pre-wrap;
+}
+
 .tab-bg {
     cursor: pointer;
 }

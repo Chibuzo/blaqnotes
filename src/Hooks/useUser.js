@@ -16,6 +16,7 @@ const useUser = () => {
 
     const followUser = async id => {
         const res = await post('user/follow', { id });
+        return res.data.followedUser
     }
 
     return {

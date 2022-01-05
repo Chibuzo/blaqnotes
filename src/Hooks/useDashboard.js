@@ -27,7 +27,9 @@ const useDashboard = () => {
 
     return {
         friends,
+        setFriends,
         suggestedUsers,
+        setSuggestedUsers,
         recentPosts
     }
 }

@@ -7,9 +7,15 @@ import usePost from '../../Hooks/usePost';
 
 const Dashboard = () => {
     //const user = { fullname: 'Chibuzo', id: 1 };
-    const { friends, suggestedUsers, recentPosts } = useDashboard();
+    const { friends, setFriends, suggestedUsers, setSuggestedUsers, recentPosts } = useDashboard();
     const { followUser } = useUser();
     const { savePost } = usePost();
+
+    const follow_user = async id => {
+        const newFollow = await followUser(id);
+        setFriends([...friends, { ...newFollow }]);
+        setSuggestedUsers([...suggestedUsers.filter(usr => String(usr._id) !== String(id))]);
+    }
 
     return (
         <div id="dashboard">
@@ -31,7 +37,7 @@ const Dashboard = () => {
                 <div className="col-4 px-5">
                     <h4>Suggestions for you <small className="float-right"><a href="#">See All</a></small></h4>
                     <div className="user-suggestions">
-                        {suggestedUsers.map(user => <div><UserThumb user={user} full={true} options={{ follow: true, followUser }} /></div>)}
+                        {suggestedUsers.map(user => <div><UserThumb user={user} full={true} options={{ follow: true, followUser: follow_user }} /></div>)}
                     </div>
                 </div>
             </div>
