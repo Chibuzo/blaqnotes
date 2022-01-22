@@ -44,17 +44,17 @@ const NewJob = () => {
                 <Form onSubmit={e => handleSubmit(e, job)}>
                     <Form.Group>
                         <Form.Label>Job Title</Form.Label>
-                        <Form.Control type="text" size="lg" onChange={e => setJob({ ...job, title: e.target.value })} value={job.title} placeholder="Job Title" />
+                        <Form.Control type="text" size="lg" onChange={e => setJob({ ...job, title: e.target.value })} value={job.title} placeholder="Job Title" required />
                     </Form.Group>
                     <Form.Group>
                         <Form.Label>Job Location</Form.Label>
-                        <Form.Control type="text" size="lg" onChange={e => setJob({ ...job, location: e.target.value })} value={job.location} placeholder="Location. e.g South Africa, Cape Town" />
+                        <Form.Control type="text" size="lg" onChange={e => setJob({ ...job, location: e.target.value })} value={job.location} placeholder="Location. e.g South Africa, Cape Town" required />
                     </Form.Group>
                     <div className='row'>
                         <div className='col-md-6'>
                             <Form.Group>
                                 <Form.Label>Job type</Form.Label>
-                                <Form.Control size="lg" as="select" onChange={e => setJob({ ...job, job_type: e.target.value })}>
+                                <Form.Control size="lg" as="select" onChange={e => setJob({ ...job, job_type: e.target.value })} required>
                                     <option value="">-- Select Type --</option>
                                     <option value="Onsite">Onsite</option>
                                     <option value="Remote">Remote</option>
@@ -64,7 +64,7 @@ const NewJob = () => {
                         <div className='col-md-6'>
                             <Form.Group>
                                 <Form.Label>Contract type</Form.Label>
-                                <Form.Control size="lg" as="select" onChange={e => setJob({ ...job, contract: e.target.value })}>
+                                <Form.Control size="lg" as="select" onChange={e => setJob({ ...job, contract: e.target.value })} required>
                                     <option value="">-- Contract Type --</option>
                                     <option value="Full-time">Full-time</option>
                                     <option value="Part-time">Part-time</option>
@@ -74,15 +74,15 @@ const NewJob = () => {
                     </div>
                     <Form.Group controlId="formBasicText">
                         <Form.Label>Qualifications</Form.Label>
-                        <Form.Control as="textarea" rows={4} onChange={e => setJob({ ...job, qualifications: e.target.value })} value={job.qualifications} placeholder="Qualifications" />
+                        <Form.Control as="textarea" rows={4} onChange={e => setJob({ ...job, qualifications: e.target.value })} value={job.qualifications} placeholder="Qualifications" required />
                     </Form.Group>
                     <Form.Group controlId="formBasicText">
                         <Form.Label>Responsibilities</Form.Label>
-                        <Form.Control as="textarea" rows={4} onChange={e => setJob({ ...job, responsibilities: e.target.value })} value={job.responsibilities} placeholder="Responsibilities" />
+                        <Form.Control as="textarea" rows={4} onChange={e => setJob({ ...job, responsibilities: e.target.value })} value={job.responsibilities} placeholder="Responsibilities" required />
                     </Form.Group>
                     <Form.Group>
                         <Form.Label>Application Email</Form.Label>
-                        <Form.Control type="text" size="lg" onChange={e => setJob({ ...job, job_email: e.target.value })} value={job.job_email} placeholder="For candidates' resume" />
+                        <Form.Control type="text" size="lg" onChange={e => setJob({ ...job, job_email: e.target.value })} value={job.job_email} placeholder="For candidates' resume" aria-required />
                     </Form.Group>
 
                     <button type="submit" style={{ padding: '7px 45px' }} className="btn btn-inverse btn-lg float-right">

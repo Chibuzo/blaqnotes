@@ -46,7 +46,7 @@ const NewPost = ({ savePost }) => {
                         <Form.Control type="text" onChange={e => setNote({ ...note, topic: e.target.value })} value={note.topic} placeholder="Enter a title..." />
                     </Form.Group>
                     <Form.Group controlId="formBasicText">
-                        <Form.Control as="textarea" rows={4} onChange={e => setNote({ ...note, note: e.target.value })} value={note.note} placeholder="Start your note here..." />
+                        <Form.Control as="textarea" rows={15} onChange={e => setNote({ ...note, note: e.target.value })} value={note.note} placeholder="Start your note here..." />
                     </Form.Group>
 
                     <button type="submit" style={{ padding: '7px 45px' }} className="btn btn-inverse btn-lg float-right">

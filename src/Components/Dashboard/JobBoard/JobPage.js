@@ -40,7 +40,7 @@ const JobPage = () => {
                     <Link to="/user/jobs" className="btn btn-inverse float-end">Back to Jobs</Link>
                 </div>
             </div>
-            <div className="row px-md-5 mt-4">
+            <div className="row px-md-5 mt-4" style={{ whiteSpace: 'pre-wrap' }}>
                 <div className="col-md-6">
                     <h4>Qualifications</h4>
                     <p className="mt-3">{job.qualifications}</p>

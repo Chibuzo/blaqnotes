@@ -34,12 +34,12 @@ const NotePage = () => {
     const handleSubmit = async (e, commentBody) => {
         e.preventDefault();
 
-        const comment = {
+        const commentData = {
             comment: commentBody,
             note_id: id
         };
 
-        const comments = await postComment(comment);
+        const { comments } = await postComment(commentData);
         setCommentBody('');
         setNote({ ...note, comments });
     }
