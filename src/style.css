@@ -1,20 +1,26 @@
 body {
     font-family: 'Montserrat', sans-serif;
+    color:#333;
 }
 
 a:link {
-    color: #660000;
+    color: #333;
 }
 
 a:hover {
     text-decoration: none;
-    color: #660000;
+    color: #333;
     font-weight: bold;
 }
 
 a:visited {
-    color: #d84c4c;
+    color: #333;
 }
+
+a.btn:link, a.btn:visited {
+    color: #f0f0f0;
+}
+
 
 h1, h2, h3, h4, h5 {
     font-family: 'Open Sans', sans-serif;
@@ -22,8 +28,8 @@ h1, h2, h3, h4, h5 {
 
 .custom-header {
     padding: 30px;
-    background-color: #000;
-    color: #fff;
+    background-color: #A5A1Df;
+    color: #000;
 }
 
 .custom-header a {
@@ -50,8 +56,8 @@ h1, h2, h3, h4, h5 {
 }
 
 .features {
-    background-color: #000;
-    color: #fff;
+    background-color: #A5A1Df;
+    color: #333;
     padding-bottom: 50px;
 }
 
@@ -66,7 +72,7 @@ h1, h2, h3, h4, h5 {
 }
 
 .feature-text {
-    color: #ccc;
+    color: #333;
 }
 
 .dashboard-div {

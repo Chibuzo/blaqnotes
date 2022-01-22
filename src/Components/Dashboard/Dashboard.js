@@ -21,11 +21,11 @@ const Dashboard = () => {
         <div id="dashboard">
             <div className="row">
                 <div className="col-8">
-                    <div class="online-friends">
+                    <div className="online-friends">
                         <h5>Online Now</h5>
                         <br />
                         <div>
-                            {friends.map(friend => (<span>{<UserThumb user={friend} />}</span>))}
+                            {friends.map(friend => (<span key={friend._id}>{<UserThumb user={friend} />}</span>))}
                         </div>
                     </div>
 
@@ -37,7 +37,7 @@ const Dashboard = () => {
                 <div className="col-4 px-5">
                     <h4>Suggestions for you <small className="float-right"><a href="#">See All</a></small></h4>
                     <div className="user-suggestions">
-                        {suggestedUsers.map(user => <div><UserThumb user={user} full={true} options={{ follow: true, followUser: follow_user }} /></div>)}
+                        {suggestedUsers.map(user => <div key={user._id}><UserThumb user={user} full={true} options={{ follow: true, followUser: follow_user }} /></div>)}
                     </div>
                 </div>
             </div>

@@ -12,11 +12,12 @@ const Login = ({ props }) => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         const loginStatus = await login(email, password);
+        console.log({ loginStatus })
         if (loginStatus === true) props.history.push('/user');
     }
 
     return (
-        <div style={{ backgroundColor: '#000', borderRadius: '10px', color: '#fff' }} className="login-div">
+        <div style={{ backgroundColor: '#100f22', borderRadius: '10px', color: '#fff' }} className="login-div">
             <div className="pane">
                 <Form onSubmit={handleSubmit}>
                     <Form.Group controlId="formBasicEmail">

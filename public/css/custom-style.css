@@ -20,6 +20,15 @@
     margin-left: 10px;
 }
 
+.topbar .nav-toggler {
+    color: #333;
+    font-size: 40px;
+}
+
+.container {
+    max-width: 1175px;
+}
+
 .topbar {
     z-index: 0;
 }
@@ -150,4 +159,22 @@
 .note, .comments {
     font-size: 20px;
     font-weight: bold;
+}
+
+.job {
+    border-bottom: #ccc solid;
+}
+
+.job-wrapper {
+    color: #333;
+    font-size: 18px;
+}
+
+/***
+    Mobile
+*/
+@media (max-width: 576px) {
+    .page-wrapper {
+        width: auto;
+    }
 }

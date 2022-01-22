@@ -14,7 +14,7 @@ const SignupForm = ({ props }) => {
     const [phone, setPhone] = useState();
     const [dob, setDob] = useState();
     const { signUp, signupError } = useUserAuth();
-    
+
     const handleForm = async (e) => {
         e.preventDefault();
         const body = {
@@ -24,7 +24,7 @@ const SignupForm = ({ props }) => {
         if (result === true) props.history.push('/signup-confirm');
     }
 
-    return(
+    return (
         <Form className="mt-5" onSubmit={handleForm}>
             <Form.Row>
                 <Form.Group as={Col}>
@@ -35,18 +35,6 @@ const SignupForm = ({ props }) => {
                 <Form.Group as={Col}>
                     <Form.Label>Last Name</Form.Label>
                     <Form.Control type="text" name="lastname" onChange={e => setLastname(e.target.value)} />
-                </Form.Group>
-            </Form.Row>
-
-            <Form.Row>
-                <Form.Group as={Col}>
-                    <Form.Label>Password</Form.Label>
-                    <Form.Control type="password" name="password" onChange={e => setPassword(e.target.value)} />
-                </Form.Group>
-
-                <Form.Group as={Col}>
-                    <Form.Label>Verify Password</Form.Label>
-                    <Form.Control type="password" onChange={e => setPassword(e.target.value)} />
                 </Form.Group>
             </Form.Row>
 
@@ -75,7 +63,19 @@ const SignupForm = ({ props }) => {
 
                 <Form.Group as={Col}>
                     <Form.Label>Date of birth</Form.Label>
-                    <Form.Control type="text" name="dob" onChange={e => setDob(e.target.value)} />
+                    <Form.Control type="date" name="dob" onChange={e => setDob(e.target.value)} />
+                </Form.Group>
+            </Form.Row>
+
+            <Form.Row>
+                <Form.Group as={Col}>
+                    <Form.Label>Password</Form.Label>
+                    <Form.Control type="password" name="password" onChange={e => setPassword(e.target.value)} />
+                </Form.Group>
+
+                <Form.Group as={Col}>
+                    <Form.Label>Verify Password</Form.Label>
+                    <Form.Control type="password" onChange={e => setPassword(e.target.value)} />
                 </Form.Group>
             </Form.Row>
 
@@ -86,7 +86,7 @@ const SignupForm = ({ props }) => {
                     SIGN UP
                 </Button>
                 <br /><br />
-                <p><small>By clicking sign Pp, you agree to our Terms, Data Policy and cookie Policy. You may receive SMS notifications from us and can opt out at any time.</small></p>
+                <p><small>By clicking sign up, you agree to our Terms, Data Policy and cookie Policy. You may receive SMS notifications from us and can opt out at any time.</small></p>
             </div>
         </Form>
     );

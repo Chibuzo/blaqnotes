@@ -8,8 +8,7 @@ const usePost = () => {
 
     const fetchPosts = async () => {
         try {
-            const res = await get('notes/feed', true);
-            return res.data;
+            return get('notes/feed', true);
         } catch (err) {
             console.error(err);
         }
@@ -17,8 +16,7 @@ const usePost = () => {
 
     const fetchPost = async id => {
         try {
-            const res = await get(`notes/${id}`, true);
-            return res.data.note;
+            return get(`notes/${id}`, true);
         } catch (err) {
             console.error(err);
         }
@@ -26,8 +24,7 @@ const usePost = () => {
 
     const savePost = async (note) => {
         try {
-            const res = await post('notes', { ...note });
-            return res.data;
+            return post('notes', { ...note });
         } catch (err) {
             console.error(err);
         }
@@ -35,8 +32,7 @@ const usePost = () => {
 
     const postComment = async comment => {
         try {
-            const res = await post('notes/comments', { ...comment });
-            return res.data.comments;
+            return post('notes/comments', { ...comment });
         } catch (err) {
             console.error(err);
         }
@@ -44,8 +40,7 @@ const usePost = () => {
 
     const powerUp = async note_id => {
         try {
-            const res = await post('notes/powerup', { note_id });
-            return res.data.power_up;
+            return post('notes/powerup', { note_id });
         } catch (err) {
             console.error(err);
         }

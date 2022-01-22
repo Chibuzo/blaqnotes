@@ -28,7 +28,7 @@ const useUserAuth = (userType = 'user') => {
 
     const login = async (email, password) => {
         try {
-            const { data } = await post('user/login', { email, password }, 'POST', false);
+            const data = await post('user/login', { email, password }, 'POST', false);
 
             if (data && data.user && data.user.token) {
                 localStorage.setItem(storageLabel, JSON.stringify(data.user));

@@ -20,8 +20,7 @@ const useDashboard = () => {
     }, []);
 
     const fetchDashboardData = async () => {
-        const res = await get('user/dashboard', true);
-        return res.data;
+        return get('user/dashboard', true);
     }
 
 

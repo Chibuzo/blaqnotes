@@ -20,8 +20,8 @@ const Header = () => {
                             <img src={logoText2} className="light-logo" alt="homepage" />
                         </span>
                     </a>
-                    <a className="nav-toggler waves-effect waves-light d-block d-md-none" href=""><i
-                        className="ti-menu ti-close"></i></a>
+                    <a className="nav-toggler waves-effect waves-light d-block d-mdnone" href="#"><i
+                        className="mdi mdi-menu ti-close"></i></a>
                 </div>
                 <div className="float-right d-none" id="">
                     <input type="text" className="form-control float-right" placeholder='Search' /><i classame="fa fa-dashboard"></i>

@@ -39,7 +39,7 @@ const NewPost = ({ savePost }) => {
                 </div> */}
                 <div className='category-wrapper'>
                     <h5 className='pl-2'>Choose a Category</h5>
-                    {categories.map(category => <span className='category' onClick={() => setNote({ ...note, category })}>{category}</span>)}
+                    {categories.map(category => <span className='category' onClick={() => setNote({ ...note, category })} key={category}>{category}</span>)}
                 </div>
                 <Form onSubmit={e => handleSubmit(e, note)}>
                     <Form.Group>

@@ -9,7 +9,7 @@ const get = async (path, auth = false) => {
         headers
     });
 
-    return res.data;
+    return res.data.data;
 }
 
 const post = async (path, data, method = "POST", auth = true) => {
@@ -28,7 +28,7 @@ const post = async (path, data, method = "POST", auth = true) => {
         data,
     });
 
-    return res.data;
+    return res.data.data;
 }
 
 export {

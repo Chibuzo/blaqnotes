@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const SideMenu = () => {
+const SideMenu = ({ logout }) => {
     return (
         <aside className="left-sidebar" data-sidebarbg="skin6">
             <div className="scroll-sidebar">
@@ -30,8 +30,11 @@ const SideMenu = () => {
                             to="/user/dating" aria-expanded="false"><i className="mdi mdi-heart"></i><span
                                 className="hide-menu">Dating</span></Link></li>
                         <li className="sidebar-item"> <Link className="sidebar-link waves-effect waves-dark sidebar-link"
-                            to="user/jobs" aria-expanded="false"><i className="mdi mdi-briefcase"></i><span
+                            to="/user/jobs" aria-expanded="false"><i className="mdi mdi-briefcase"></i><span
                                 className="hide-menu">Jobs</span></Link></li>
+                        <li className="sidebar-item"> <Link className="sidebar-link waves-effect waves-dark sidebar-link"
+                            to="#" aria-expanded="false"><i className="mdi mdi-logout"></i><span
+                                className="hide-menu" onClick={e => logout()}>Logout</span></Link></li>
                     </ul>
 
                 </nav>

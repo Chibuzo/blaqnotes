@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { BrowserRouter as Router, Route, useHistory } from "react-router-dom";
 import useUserAuth from '../../Hooks/useUserAuth';
 import Header from './Shared/Header';
 import SideMenu from './Shared/SideMenu';
@@ -12,14 +12,25 @@ import CoursePage from './ELearning/CoursePage';
 import CreateAssessment from './ELearning/CreateAssessment';
 import AssessmentPage from './ELearning/AssessmentPage';
 import Timeline from '../Timeline/Index';
+import NewJob from './JobBoard/NewJob';
+import JobBoard from './JobBoard/JobBoard';
+import JobPage from './JobBoard/JobPage';
 
 const Index = (props) => {
-    const { user, isLoggedIn } = useUserAuth();
+    const { user, isLoggedIn, logout } = useUserAuth();
+
+    let history = useHistory();
 
     useEffect(() => {
         isLoggedIn();
         //if (!user || !user.isLoggedIn) props.history.push('/')
     }, []);
+
+    useEffect(() => {
+        if (user && user.IsLoggedIn === false) {
+            history.push('/');
+        }
+    }, [user]);
 
     return (
         <Router>
@@ -28,7 +39,7 @@ const Index = (props) => {
 
                 <Header />
 
-                <SideMenu />
+                <SideMenu logout={logout} />
 
                 <div className="page-wrapper">
                     <div className="container-fluid">
@@ -42,6 +53,9 @@ const Index = (props) => {
                             <Route path="/user/assessment/:course_id" component={AssessmentPage} />
                             <Route path="/user/timeline" component={Timeline} />
                             <Route path="/user/note/:id/:topic" component={NotePage} />
+                            <Route path="/user/new-job" component={NewJob} />
+                            <Route path="/user/jobs" component={JobBoard} />
+                            <Route path="/user/job/:id/:title" component={JobPage} />
                         </div>
                     </div>
 

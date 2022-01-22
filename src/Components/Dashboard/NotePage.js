@@ -28,7 +28,7 @@ const NotePage = () => {
         }
 
         const noteData = await fetchData();
-        setNote(noteData);
+        setNote(noteData.note);
     }, []);
 
     const handleSubmit = async (e, commentBody) => {
@@ -48,9 +48,7 @@ const NotePage = () => {
         const { id: user_id } = isLoggedIn();
 
         if (note.power_up.includes(user_id)) return;
-        console.log({ note });
         const power_up = await powerUp(note_id);
-        console.log({ power_up })
         setNote({ ...note, power_up });
     }
 
