@@ -12,8 +12,8 @@ const Dashboard = () => {
     const { savePost } = usePost();
 
     const follow_user = async id => {
-        const newFollow = await followUser(id);
-        setFriends([...friends, { ...newFollow }]);
+        const { followedUser } = await followUser(id);
+        setFriends([...friends, { ...followedUser }]);
         setSuggestedUsers([...suggestedUsers.filter(usr => String(usr._id) !== String(id))]);
     }
 

@@ -7,16 +7,14 @@ const useUser = () => {
 
     const findUser = async id => {
         try {
-            const founduser = await get('user');
-            return founduser.data.user;
+            return get('user');
         } catch (err) {
             console.error(err);
         }
     }
 
     const followUser = async id => {
-        const res = await post('user/follow', { id });
-        return res.data.followedUser
+        return post('user/follow', { id });
     }
 
     return {

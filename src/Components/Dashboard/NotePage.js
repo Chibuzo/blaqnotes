@@ -48,7 +48,7 @@ const NotePage = () => {
         const { id: user_id } = isLoggedIn();
 
         if (note.power_up.includes(user_id)) return;
-        const power_up = await powerUp(note_id);
+        const { power_up } = await powerUp(note_id);
         setNote({ ...note, power_up });
     }
 
