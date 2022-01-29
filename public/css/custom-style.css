@@ -170,6 +170,21 @@
     font-size: 18px;
 }
 
+.video-box, .lesson-box {
+    height: 120px;;
+    background-color: #333;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 6px;
+    cursor: pointer;
+}
+
+.lesson-box {
+    height: 150px;
+}
+
 /***
     Mobile
 */

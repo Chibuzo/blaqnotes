@@ -36,8 +36,8 @@ const useCourse = () => {
         //setLoading(true);
 
         try {
-            const courseList = await get('courses');
-            setCourses(courseList.data.courses.map(course => ({ title: course.title, id: course._id, lessons: course.lessons })));
+            const { courses: courseList } = await get('courses');
+            setCourses(courseList.map(course => ({ title: course.title, id: course._id, lessons: course.lessons })));
         } catch (err) {
             console.error(err);
         } finally {
@@ -49,8 +49,8 @@ const useCourse = () => {
         setLoading(true);
 
         try {
-            const course = await get('courses/' + id);
-            setCourse(course.data.course);
+            const { course: _course } = await get('courses/' + id);
+            setCourse(_course);
         } catch (err) {
             console.error(err);
         } finally {

@@ -4,7 +4,7 @@ import { get, post } from "../Helpers/APIRequest";
 const useCBT = () => {
     const [createLoading, setCreateLoading] = useState();
     const [assessment, setAssessment] = useState();
-    const [result, setResult] = useState({});
+    const [result, setResult] = useState(null);
     const [loading, setLoading] = useState();
 
 
@@ -12,10 +12,10 @@ const useCBT = () => {
         setCreateLoading(true);
 
         try {
-            const res = await post(`courses/assessment`, { course_id, assessment: questions }, 'POST', false);
-            if (res.message.trim() === 'Assessment added') {
+            const { message } = await post(`courses/assessment`, { course_id, assessment: questions }, 'POST', false);
+            if (message.trim() === 'Assessment added') {
                 // display message  
-                console.log(res)
+                console.log(message)
             }
         } catch (err) {
             console.error(err);
@@ -26,8 +26,8 @@ const useCBT = () => {
 
     const fetchAssessment = async course_id => {
         try {
-            const courseAssessment = await get(`courses/assessment/${course_id}`);
-            setAssessment(courseAssessment.data.assessment);
+            const { assessment: courseAssessment } = await get(`courses/assessment/${course_id}`);
+            setAssessment([...courseAssessment]);
         } catch (err) {
             console.error(err)
         }
@@ -65,7 +65,7 @@ const useCBT = () => {
         setLoading(true);
         try {
             const result = await get(`courses/assessment/result/${course_id}`, true);
-            setResult(result.data);
+            setResult(result);
         } catch (err) {
             console.error(err);
         } finally {
@@ -75,8 +75,8 @@ const useCBT = () => {
 
     const submitAssessment = async (course_id, answers, num_of_questions) => {
         try {
-            const res = await post('course/asessment/submit', { course_id, answers, num_of_questions });
-            setResult(res.data.result);
+            const { result } = await post('course/asessment/submit', { course_id, answers, num_of_questions });
+            setResult(result);
         } catch (err) {
             console.error(err);
         }

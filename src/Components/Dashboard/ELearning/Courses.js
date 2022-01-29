@@ -1,29 +1,24 @@
 import React, { useEffect } from 'react';
 import useCourse from '../../../Hooks/useCourse';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
 import { Link } from 'react-router-dom';
 
 const Courses = (props) => {
     const { courses } = useCourse();
 
     return (
-        <Col span={12}>
-            <div className="card">
-                <div className="card-body">
-                    <h2 className="mb-4">Courses</h2>
-                    <Row>
-                        {courses.map(course => {
-                            return (<Col span={3}>
-                                <h5>{course.title}</h5>
-                                <div className="lesson-box"></div>
-                                <Link to={`/user/course/${course.id}`}>Lessons ({course.lessons.length})</Link>
-                            </Col>)
-                        })}
-                    </Row>
+        <div className='row justify-content-center'>
+            <div className='col-md-12'>
+                <h2 className="mb-4 text-center">E-Learning</h2>
+                <div className='row'>
+                    {courses.map(course => {
+                        return (<div className='col-md-4 text-center'>
+                            <div className="lesson-box"><i className='fa fa-play-circle fa-3x'></i></div>
+                            <Link to={`/user/course/${course.id}`}><h5>{course.title} ({course.lessons.length})</h5></Link>
+                        </div>)
+                    })}
                 </div>
             </div>
-        </Col>
+        </div>
     );
 }
 

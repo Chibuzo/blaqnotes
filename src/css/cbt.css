@@ -3,6 +3,10 @@
     margin-left: -26px;
 }
 
+.cbt-list li label {
+    margin-left: 10px;
+}
+
 .cbt-questions {
     padding: 10px 15px;
 }

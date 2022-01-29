@@ -54,6 +54,7 @@ const TakeTest = (props) => {
 
     const navigateQuest = nextPos => {
         setCurrentQuestion(questions[nextPos]);
+        console.log(questions[nextPos])
         selectedAns.length > 0 && saveQuestionState();
         restoreQuestionState(nextPos);
         setCurrentPosition(nextPos);
@@ -89,94 +90,90 @@ const TakeTest = (props) => {
             showCancelButton: true,
             confirmButtonText: "Submit"
         }).then(() => {
-            const answers = JSON.parse(localStorage.getItem(answersKey));
-            submitAssessment(course_id, answers, questions.length);
-            const userData = JSON.parse(localStorage.getItem('userData'));
-            localStorage.clear();
-            localStorage.setItem('userData', JSON.stringify(userData));
-            setTestStarted("Submitted");
+            // const answers = JSON.parse(localStorage.getItem(answersKey));
+            // submitAssessment(course_id, answers, questions.length);
+            // const userData = JSON.parse(localStorage.getItem('userData'));
+            // localStorage.clear();
+            // localStorage.setItem('userData', JSON.stringify(userData));
+            // setTestStarted("Submitted");
         });
     }
 
     return (
-        <div className="col-12">
-            <div className="card">
-                <div className="card-body">
-                    {testStarted === "No" && (
-                        <div className="col-sm-12">
-                            <section className="panel">
-                                <div className="panel-body test-center">
-                                    <div className="col-md-12">
-                                        <h2>Test Instruction</h2>
-                                        <h4>Please read the following instructions very carefully.</h4>
+        <div className="col-md-12">
+            {testStarted === "No" && (
+                <div className="col-sm-12">
+                    <section className="panel">
+                        <div className="panel-body test-center">
+                            <div className="col-md-12">
+                                <h2>Test Instruction</h2>
+                                <h4>Please read the following instructions very carefully.</h4>
 
-                                        <ol className="text-left">
-                                            <li>
-                                                Questions are presented as multiple-choice. Please read
-                                                each question carefully and choose the correct answer.
-                                            </li>
-                                        </ol>
-                                        <br />
-                                        <p>Proceed to take the test and Good luck!</p>
-                                        <br />
-                                        <button className="btn btn-primary" onClick={() => setTestStarted("Yes")}>
-                                            Start Test
-                                        </button>
-                                    </div>
-                                </div>
-                            </section>
+                                <ol className="text-left">
+                                    <li>
+                                        Questions are presented as multiple-choice. Please read
+                                        each question carefully and choose the correct answer.
+                                    </li>
+                                </ol>
+                                <br />
+                                <p>Proceed to take the test and Good luck!</p>
+                                <br />
+                                <button className="btn btn-inverse" onClick={() => setTestStarted("Yes")}>
+                                    Start Test
+                                </button>
+                            </div>
                         </div>
-                    )}
-
-                    {testStarted === "Yes" && (
-                        <div className="col-md-12">
-                            <section className="panel">
-                                <div className="panel-body">
-                                    <div className="row">
-                                        <div className="col-md-7">
-                                            <Question question={currentQuestion} selectedAns={selectedAns} handleOptChange={handleOptChange} submit={submit} />
-                                        </div>
-
-                                        <div className="col-md-1"></div>
-
-                                        <div className="col-md-4 text-right">
-
-                                        </div>
-                                    </div>
-
-                                    <div className="row nav-btns">
-                                        <div className="col-md-7">
-                                            <button className="btn btn-white pull-left" onClick={prevQuestion}><i className="fa fa-caret-left fa-lg"></i>&nbsp; Previous</button>
-                                            <button className="btn btn-white pull-right" onClick={nextQuestion}>Next &nbsp;<i className="fa fa-caret-right fa-lg"></i></button>
-                                        </div>
-
-                                        <div className="col-md-5">
-                                            <button className="btn btn-primary pull-right" onClick={submit}>Submit Answers</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </section>
-                        </div>
-                    )}
-
-                    {testStarted === "Submitted" && (
-                        <div className="col-md-12">
-                            <section className="panel">
-                                <div className="panel-body test-center">
-                                    {test.ShowResult && (
-                                        <div className="text-center">
-                                            <h3>Your assessment Result:</h3>
-                                            <p><strong>Score:</strong> {result.score}</p>
-                                            <p><strong>Number of Questions:</strong> {result.NumOfQuestions}</p>
-                                            <p><strong>Percentage:</strong> {(result.score / result.NumOfQuestions) * 100}</p>
-                                        </div>
-                                    )}
-                                </div>
-                            </section>
-                        </div>
-                    )}
+                    </section>
                 </div>
-            </div>
+            )}
+
+            {testStarted === "Yes" && (
+                <div className="col-md-12">
+                    <section className="panel">
+                        <div className="panel-body">
+                            <div className="row">
+                                <div className="col-md-7">
+                                    <Question question={currentQuestion} selectedAns={selectedAns} handleOptChange={handleOptChange} submit={submit} />
+                                </div>
+
+                                <div className="col-md-1"></div>
+
+                                <div className="col-md-4 text-right">
+
+                                </div>
+                            </div>
+
+                            <div className="row nav-btns">
+                                <div className="col-md-7">
+                                    <button className="btn btn-white pull-left" onClick={prevQuestion}><i className="fa fa-caret-left fa-lg"></i>&nbsp; Previous</button>
+                                    <button className="btn btn-white pull-right" onClick={nextQuestion}>Next &nbsp;<i className="fa fa-caret-right fa-lg"></i></button>
+                                </div>
+
+                                <div className="col-md-5">
+                                    <button className="btn btn-inverse pull-right" onClick={submit}>Submit Answers</button>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            )}
+
+            {testStarted === "Submitted" && (
+                <div className="col-md-12">
+                    <section className="panel">
+                        <div className="panel-body test-center">
+                            {result && (
+                                <div className="text-center">
+                                    <h3>Your assessment Result:</h3>
+                                    <p><strong>Score:</strong> {result.score}</p>
+                                    <p><strong>Number of Questions:</strong> {result.NumOfQuestions}</p>
+                                    <p><strong>Percentage:</strong> {(result.score / result.NumOfQuestions) * 100}</p>
+                                </div>
+                            )}
+                        </div>
+                    </section>
+                </div>
+            )}
         </div>
     );
 }
