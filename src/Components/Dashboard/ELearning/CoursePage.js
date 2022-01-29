@@ -39,6 +39,8 @@ const CoursePage = (props) => {
             </div>
 
             <div className="col-md-3">
+                <Link to="/user/courses" className='btn btn-sm btn-light float-end' style={{ color: '#333', borderRadius: '20px' }}>Show All</Link>
+                <div className='clearfix'></div>
                 <h4>Lessons</h4>
                 <div className='row'>{course.lessons && course.lessons.map(lesson => <LessonBox lesson={lesson} loadLesson={loadLesson} key={lesson._id} />)}</div>
             </div>

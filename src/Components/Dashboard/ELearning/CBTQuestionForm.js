@@ -118,7 +118,7 @@ const CBTQuestionForm = (props) => {
                     <input type="hidden" name="question_id" value={question.Id} />
                 </div>
                 <div className="form-group">
-                    <button type={btnType} className="btn btn-primary btn-lg pull-right" id="submit-btn" onClick={flag ? pushQuestion : null}>{btnText}</button>
+                    <button type={btnType} className="btn btn-inverse btn-lg float-end" id="submit-btn" onClick={flag ? pushQuestion : null}>{btnText}</button>
                 </div>
             </div>
         </form>

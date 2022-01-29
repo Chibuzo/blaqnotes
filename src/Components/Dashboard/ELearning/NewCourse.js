@@ -38,33 +38,29 @@ const NewCourse = props => {
 
     return (
         <div className="col-12">
-            <div className="card">
-                <div className="card-body">
-                    <div style={{ width: '40%', margin: 'auto' }} className="mb-5">
-                        <form onSubmit={submitForm} method="post">
-                            <h2>New Course</h2><br />
-                            <div className="form-group">
-                                <label>Course Title</label>
-                                <select name="course_id" className="form-control" required>
-                                    <option value="">-- Select Course Title --</option>
-                                    {Array.isArray(courses) && courses.map(course => <option value={course.id}>{course.title}</option>)}
-                                </select>
-                            </div>
-                            <div className="form-group">
-                                <label>Course title</label>
-                                <input type="text" className="form-control" name="title" placeholder="eg. Lesson one" />
-                            </div>
-                            <div className="form-group">
-                                <label>Attach File <small>[*]</small></label>
-                                <input type="file" name="upload_file" accept="image/*|audio/*|video/*" onChange={getSelectedFile} className="form-control" required />
-                            </div>
-                            <button type="submit" className="btn btn-primary">
-                                <FontAwesomeIcon icon={faUpload}></FontAwesomeIcon> &nbsp;
-                                Save Course
-                            </button>
-                        </form>
+            <div style={{ width: '40%', margin: 'auto' }} className="mb-5">
+                <form onSubmit={submitForm} method="post">
+                    <h2>New Course</h2><br />
+                    <div className="form-group">
+                        <label>Course Title</label>
+                        <select name="course_id" className="form-control" required>
+                            <option value="">-- Select Course Title --</option>
+                            {Array.isArray(courses) && courses.map(course => <option value={course.id}>{course.title}</option>)}
+                        </select>
                     </div>
-                </div>
+                    <div className="form-group">
+                        <label>Course title</label>
+                        <input type="text" className="form-control" name="title" placeholder="eg. Lesson one" />
+                    </div>
+                    <div className="form-group">
+                        <label>Attach File <small>[*]</small></label>
+                        <input type="file" name="upload_file" accept="image/*|audio/*|video/*" onChange={getSelectedFile} className="form-control" required />
+                    </div>
+                    <button type="submit" className="btn btn-inverse">
+                        <FontAwesomeIcon icon={faUpload}></FontAwesomeIcon> &nbsp;
+                        Save Course
+                    </button>
+                </form>
             </div>
         </div>
     );

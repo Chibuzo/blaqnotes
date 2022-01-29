@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 
 import Swal from "sweetalert2";
 import useCBT from "../../../Hooks/useCBT";
@@ -121,6 +122,8 @@ const TakeTest = (props) => {
                                 <button className="btn btn-inverse" onClick={() => setTestStarted("Yes")}>
                                     Start Test
                                 </button>
+
+                                <Link to={`/user/course/${course_id}`} className="btn btn-danger float-end">Cancel</Link>
                             </div>
                         </div>
                     </section>

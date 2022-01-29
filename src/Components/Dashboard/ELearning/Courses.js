@@ -12,7 +12,7 @@ const Courses = (props) => {
                 <div className='row'>
                     {courses.map(course => {
                         return (<div className='col-md-4 text-center'>
-                            <div className="lesson-box"><i className='fa fa-play-circle fa-3x'></i></div>
+                            <Link to={`/user/course/${course.id}`}><div className="lesson-box"><i className='fa fa-play-circle fa-3x'></i></div></Link>
                             <Link to={`/user/course/${course.id}`}><h5>{course.title} ({course.lessons.length})</h5></Link>
                         </div>)
                     })}
