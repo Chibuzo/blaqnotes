@@ -19,10 +19,10 @@ const useCourse = () => {
         setLoading(true);
 
         try {
-            const uploadResult = await post('file/upload', fileData, 'POST', false);
-            if (!uploadResult.status) throw new Error(uploadResult.message);
+            const { filename } = await post('file/upload', fileData, 'POST', false);
+            if (!filename) throw new Error('Couldn\'t upload file at this time');
 
-            lessonData.file_location = uploadResult.data.filename;
+            lessonData.file_location = filename;
             const lesson = await post('courses/lesson', lessonData, 'POST', false);
             setContent([...content, ...lesson]);
         } catch (err) {
