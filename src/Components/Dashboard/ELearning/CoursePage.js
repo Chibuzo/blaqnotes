@@ -31,7 +31,7 @@ const CoursePage = (props) => {
             </div>
             <div className="col-md-9">
                 <video width="100%" key={currentLesson.file_location} controls>
-                    <source src={`http://localhost:3001/file/video/${currentLesson.file_location}`} type="video/mp4" />
+                    <source src={`${process.env.REACT_APP_API_URL}file/video/${currentLesson.file_location}`} type="video/mp4" />
                 </video>
                 <br />
                 <h3>{currentLesson.title}</h3>
