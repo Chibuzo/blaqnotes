@@ -21,14 +21,19 @@ const post = async (path, data, method = "POST", auth = true) => {
         method = 'PUT';
     }
 
-    const res = await axios({
-        url: process.env.REACT_APP_API_URL + path,
-        method: method,
-        headers: headers,
-        data,
-    });
+    try {
+        const res = await axios({
+            url: process.env.REACT_APP_API_URL + path,
+            method: method,
+            headers: headers,
+            data,
+        });
 
-    return res.data.data;
+        return res.data.data;
+    } catch (err) {
+        console.log(err.message)
+        throw new Error(err.response.data.message);
+    }
 }
 
 export {

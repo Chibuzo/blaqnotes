@@ -20,7 +20,11 @@ const useDashboard = () => {
     }, []);
 
     const fetchDashboardData = async () => {
-        return get('user/dashboard', true);
+        try {
+            return get('user/dashboard', true);
+        } catch (err) {
+            console.log(err.message)
+        }
     }
 
 

@@ -29,7 +29,7 @@ const useUserAuth = (userType = 'user') => {
     const login = async (email, password) => {
         try {
             const data = await post('user/login', { email, password }, 'POST', false);
-
+            console.log({ data })
             if (data && data.user && data.user.token) {
                 localStorage.setItem(storageLabel, JSON.stringify(data.user));
                 setUser({ ...data.user });
@@ -38,7 +38,7 @@ const useUserAuth = (userType = 'user') => {
                 setLoginError(data.message);
             }
         } catch (err) {
-            setLoginError(err.response && err.response.data.error.message);
+            setLoginError(err.message);
         }
     }
 
@@ -57,17 +57,18 @@ const useUserAuth = (userType = 'user') => {
             await post('user/register', user, 'POST', false);
             return true;
         } catch (err) {
-            setSignupError(err.response.data.error.message);
+            console.log(err)
+            setSignupError(err.message);
         }
     }
 
-    const verifyEmail = async code => {
-        const _code = code.split(".");
-        const guid = _code[0];
-        const email = _code[1];
-
-        const result = await get(`Users/VerifyEmail/${email}/${guid}`, false);
-        setVerification(result.Status);
+    const verifyEmail = async (email_hash, hash_string) => {
+        try {
+            const { user } = await post(`user/activate/`, { email_hash, hash_string }, 'PUT', false);
+            return { status: true, user };
+        } catch (err) {
+            return { status: false, message: err.message };
+        }
     }
 
     return {
