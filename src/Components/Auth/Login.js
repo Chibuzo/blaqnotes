@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import Alert from 'react-bootstrap/Alert';
-import ReactHtmlParser from 'react-html-parser';
 import useUserAuth from '../../Hooks/useUserAuth';
 import { useHistory, Link } from 'react-router-dom';
 
@@ -36,7 +35,7 @@ const Login = ({ props }) => {
                     </Form.Text>
                     <p className="mt-3 float-right"><span className="text-muted">Don't have an account?</span> <Link to="/signup">Sign Up</Link></p>
                     <br /><br />
-                    {loginError && <Alert variant="danger">{ReactHtmlParser(loginError)}</Alert>}
+                    {loginError && <Alert variant="danger">{loginError}</Alert>}
                     <Button variant="danger" type="submit" style={{ padding: '7px 45px' }} className="clearfix">
                         Login
                     </Button>
