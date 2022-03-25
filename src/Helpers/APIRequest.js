@@ -29,10 +29,17 @@ const post = async (path, data, method = "POST", auth = true) => {
             data,
         });
 
-        return res.data.data;
+        return {
+            status: res.data.status,
+            message: res.data.message,
+            data: res.data.data
+        }
     } catch (err) {
-        console.log(err.message)
-        throw new Error(err.response.data.message);
+        return {
+            status: err.response.data.status,
+            message: err.response.data.message,
+            data: err.response
+        }
     }
 }
 

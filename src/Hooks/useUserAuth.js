@@ -71,6 +71,26 @@ const useUserAuth = (userType = 'user') => {
         }
     }
 
+    const sendPasswordResetEmail = async email => {
+        try {
+            return post('user/send-password-reset-email', { email }, 'POST', false);
+        } catch (err) {
+            return { status: false, message: err.message };
+        }
+    }
+
+    const resetPassword = async (email_hash, hash_string, password) => {
+        try {
+            return post('user/reset-password', {
+                email_hash,
+                hash_string,
+                password
+            }, 'POST', false);
+        } catch (err) {
+            return { status: false, message: err.message };
+        }
+    }
+
     return {
         user,
         isLoggedIn,
@@ -81,6 +101,8 @@ const useUserAuth = (userType = 'user') => {
         signupError,
         verifyEmail,
         verificationStatus,
+        sendPasswordResetEmail,
+        resetPassword
         // getLoggedInUser,
     }
 };

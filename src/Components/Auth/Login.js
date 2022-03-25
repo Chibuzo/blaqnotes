@@ -2,18 +2,20 @@ import React, { useState } from 'react';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import Alert from 'react-bootstrap/Alert';
+import ReactHtmlParser from 'react-html-parser';
 import useUserAuth from '../../Hooks/useUserAuth';
+import { useHistory, Link } from 'react-router-dom';
 
 const Login = ({ props }) => {
     const [email, setEmail] = useState();
     const [password, setPassword] = useState();
     const { login, loginError } = useUserAuth();
+    let history = useHistory();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         const loginStatus = await login(email, password);
-        console.log({ loginStatus })
-        if (loginStatus === true) props.history.push('/user');
+        if (loginStatus === true) history.push('/user');
     }
 
     return (
@@ -30,11 +32,11 @@ const Login = ({ props }) => {
                         <Form.Control type="password" placeholder="Password" onChange={e => setPassword(e.target.value)} />
                     </Form.Group>
                     <Form.Text className="text-muted">
-                        Forgotten password?
+                        <Link to="/forgot-password">Forgotten password?</Link>
                     </Form.Text>
-                    <p className="mt-3 float-right"><span className="text-muted">Don't have an account?</span> <a href="/signup">Sign Up</a></p>
+                    <p className="mt-3 float-right"><span className="text-muted">Don't have an account?</span> <Link to="/signup">Sign Up</Link></p>
                     <br /><br />
-                    {loginError && <Alert variant="danger">{loginError}</Alert>}
+                    {loginError && <Alert variant="danger">{ReactHtmlParser(loginError)}</Alert>}
                     <Button variant="danger" type="submit" style={{ padding: '7px 45px' }} className="clearfix">
                         Login
                     </Button>
