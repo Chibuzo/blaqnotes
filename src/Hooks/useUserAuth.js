@@ -28,17 +28,16 @@ const useUserAuth = (userType = 'user') => {
 
     const login = async (email, password) => {
         try {
-            const data = await post('user/login', { email, password }, 'POST', false);
-            console.log({ data })
+            const { status, message, data } = await post('user/login', { email, password }, 'POST', false);
             if (data && data.user && data.user.token) {
                 localStorage.setItem(storageLabel, JSON.stringify(data.user));
                 setUser({ ...data.user });
                 return true;
             } else {
-                setLoginError(data.message);
+                setLoginError(message);
             }
         } catch (err) {
-            setLoginError(err.message);
+            setLoginError(err.message || 'Server error');
         }
     }
 
@@ -57,15 +56,14 @@ const useUserAuth = (userType = 'user') => {
             await post('user/register', user, 'POST', false);
             return true;
         } catch (err) {
-            console.log(err)
             setSignupError(err.message);
         }
     }
 
     const verifyEmail = async (email_hash, hash_string) => {
         try {
-            const { user } = await post(`user/activate/`, { email_hash, hash_string }, 'PUT', false);
-            return { status: true, user };
+            const { data } = await post(`user/activate/`, { email_hash, hash_string }, 'PUT', false);
+            return { status: true, user: data.user };
         } catch (err) {
             return { status: false, message: err.message };
         }

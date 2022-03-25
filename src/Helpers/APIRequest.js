@@ -9,7 +9,11 @@ const get = async (path, auth = false) => {
         headers
     });
 
-    return res.data.data;
+    return {
+        status: res.data.status,
+        message: res.data.message,
+        data: res.data.data
+    }
 }
 
 const post = async (path, data, method = "POST", auth = true) => {
@@ -33,7 +37,7 @@ const post = async (path, data, method = "POST", auth = true) => {
             status: res.data.status,
             message: res.data.message,
             data: res.data.data
-        }
+        };
     } catch (err) {
         return {
             status: err.response.data.status,

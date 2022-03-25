@@ -4,7 +4,8 @@ import { get, post } from "../Helpers/APIRequest";
 const useJobBoard = () => {
     const fetchJobs = async () => {
         try {
-            return get('jobs', true);
+            const { data } = await get('jobs', true);
+            return data;
         } catch (err) {
             console.log(err);
         }
@@ -12,7 +13,8 @@ const useJobBoard = () => {
 
     const fetchJob = async id => {
         try {
-            return get(`jobs/${id}`, true);
+            const { data } = await get(`jobs/${id}`, true);
+            return data;
         } catch (err) {
             console.log(err);
         }
@@ -20,7 +22,8 @@ const useJobBoard = () => {
 
     const saveJob = async job => {
         try {
-            return post('jobs', job);
+            const { data } = await post('jobs', job);
+            return data;
         } catch (err) {
             console.log(err);
         }
